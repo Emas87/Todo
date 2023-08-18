@@ -20,7 +20,7 @@ function TodoList() {
             return;
         setAdding(false);
         
-        axios.post('https://localhost:7124/api/Todo',
+        axios.post('https://localhost:5003/api/Todo',
             {
                 name:newName, description:newDescription
             }
@@ -35,7 +35,7 @@ function TodoList() {
         });
     };
     const getTodos = () => {
-        axios.get('https://localhost:7124/api/Todo')
+        axios.get('https://localhost:5003/api/Todo')
         .then(response => {
             setTodos(response.data)
         })
@@ -44,7 +44,7 @@ function TodoList() {
         });
     }
     const updateTodo = (todo) => {
-        axios.put('https://localhost:7124/api/Todo',
+        axios.put('https://localhost:5003/api/Todo',
             {
                 ...todo
             }
@@ -66,7 +66,7 @@ function TodoList() {
         deleteTodo(todo.id);
     };
     const deleteTodo = (id) => {
-        axios.delete(`https://localhost:7124/api/Todo/${id}`)
+        axios.delete(`https://localhost:5003/api/Todo/${id}`)
         .then(() => {
             getTodos();
         })
@@ -87,7 +87,7 @@ function TodoList() {
                     }
                 )}                
             </Accordion>
-            <Button className="bi bi-plus-circle" onClick={addingTodo}>Todo</Button>
+            <Button className="bi bi-plus-circle" onClick={addingTodo}> Todo</Button>
             {adding &&<Form className="hidden">
                 <Form.Group>
                     <Form.Label>Todo Name</Form.Label>

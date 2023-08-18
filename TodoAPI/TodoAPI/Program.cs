@@ -3,8 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using TodoAPI;
 using TodoAPI.Repository;
 using TodoAPI.Interfaces;
+using Microsoft.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.WebHost.UseUrls("https://localhost:5003");
+
 
 // Add services to the container.
 
@@ -49,6 +52,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 
 app.UseHttpsRedirection();
 
