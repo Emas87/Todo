@@ -17,6 +17,15 @@ builder.Services.AddDbContext<DataContext>(options =>
 builder.Services.AddTransient<Seed>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<ITodoRepository, TodoRepository>();
+builder.Services.AddCors( options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.AllowAnyOrigin();
+        builder.WithMethods("GET", "POST", "PUT", "DELETE");
+        builder.AllowAnyHeader();
+    });
+});
 
 var app = builder.Build();
 
@@ -46,5 +55,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+app.UseCors();
 
 app.Run();

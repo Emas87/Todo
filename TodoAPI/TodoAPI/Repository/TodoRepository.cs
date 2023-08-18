@@ -47,7 +47,7 @@ namespace TodoAPI.Repository
             oldTodo.Description = todo.Description;
             oldTodo.UpdateDate = DateTime.Now.ToUniversalTime();
             oldTodo.Status = todo.Status;            
-            _dataContext.Update(oldTodo);           
+            _dataContext.Update(oldTodo);
             return true;
         }
 
